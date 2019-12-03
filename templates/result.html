@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+
+	<header>
+		<div class="container">
+		<div id="brandname">
+			Application
+		</div>
+		<h2>Toxic Comment Classifier</h2>
+		
+	</div>
+	</header>
+	<p><b></b></p>
+	<div class="results">
+
+
+		
+	{% if prediction == [0, 0, 0, 0, 0, 0]%}
+	<h2 style="color:blue;">Comment is clean!</h2>
+	{% else%}
+	<h2 style="color:red;">Comment is toxic!</h2>
+
+        <p>toxic {%str(round(prediction[0], 2))%}</p>
+        <p>severe_toxic {%str(round(prediction[1], 2))%}</p>
+        <p>obscene {%str(round(prediction[2], 2))%}</p>
+        <p>threat {%str(round(prediction[3], 2))%}</p>
+        <p>insult {%str(round(prediction[4], 2))%}</p>
+        <p>identity_hate {%str(round(prediction[5], 2))%}</p>
+
+	{% endif %}
+
+	</div>
+
+</body>
+</html>
